@@ -4,13 +4,13 @@ static forEach(arr, callback) {
 }
 
 static map(arr, callback) {
-    var response = new Array();
+    var response = [];
     for(var i=0;i<=arr.length-1;i++) response.push(callback(arr[i]));
     return response;
 }
 
 static skip(arr, n) {
-    var response = new Array();
+    var response = [];
     for(var i=n;i<=arr.length-1;i++){
         response.push(arr[i])
     }
