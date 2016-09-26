@@ -1,11 +1,15 @@
 export default class ArrayMethods {
 static forEach(arr, callback) {
-    for(var i=0;i<=arr.length-1;i++)callback(arr[i]);
+    for(var i=0;i<=arr.length-1;i++) {
+        callback(arr[i]);
+    }
 }
 
 static map(arr, callback) {
     var response = [];
-    for(var i=0;i<=arr.length-1;i++) response.push(callback(arr[i]));
+    for(var i=0;i<=arr.length-1;i++) {
+        response.push(callback(arr[i]));
+    }
     return response;
 }
 
