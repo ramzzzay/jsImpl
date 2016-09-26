@@ -1,3 +1,5 @@
+'use strict';
+
 export default class ArrayMethods {
     constructor(array) {
         this.array = array;
@@ -38,7 +40,6 @@ export default class ArrayMethods {
     }
 
     reduce(callback) {
-        'use strict';
         if (this === null) {
             throw new TypeError('Array.prototype.reduce called on null or undefined');
         }
@@ -66,7 +67,6 @@ export default class ArrayMethods {
     };
 
     filter(fun) {
-        'use strict';
         if (this === void 0 || this === null) {
             throw new TypeError();
         }
