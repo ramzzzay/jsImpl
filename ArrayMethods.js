@@ -1,12 +1,22 @@
 'use strict';
 
 export default class ArrayMethods {
-    constructor(array) {
+
+    constructor(array){
         this.array = array;
     }
 
     toString() {
-        return this.array.map(i=>i).toString();
+        return this.array.toString();
+    }
+
+    static chain(array){
+        this.array = array;
+        return new ArrayMethods(array)
+    }
+
+    value(){
+        return this.array;
     }
 
     forEach(callback) {
@@ -70,7 +80,7 @@ export default class ArrayMethods {
         if (this === void 0 || this === null) {
             throw new TypeError();
         }
-        var t = Object(this);
+        var t = Object(this.array);
         var len = t.length >>> 0;
         if (typeof fun !== 'function') {
             throw new TypeError();
