@@ -67,31 +67,29 @@ class ArrayMethods {
     }
 
     reduce(callback) {
-        if (this === null) {
-            throw new TypeError('Array.prototype.reduce called on null or undefined');
-        }
-        if (typeof callback !== 'function') {
-            throw new TypeError(callback + ' is not a function');
-        }
-        var t = Object(this.array), len = t.length >>> 0, k = 0, value;
+        var k = 0, value;
         if (arguments.length == 2) {
             value = arguments[1];
         } else {
-            while (k < len && !(k in t)) {
+            while (k < this.array.length && !(k in this.array)) {
                 k++;
             }
-            if (k >= len) {
+            if (k >= this.array.length) {
                 throw new TypeError('Reduce of empty array with no initial value');
             }
-            value = t[k++];
+            value = this.array[k++];
         }
-        for (; k < len; k++) {
-            if (k in t) {
-                value = callback(value, t[k], k, t);
+        for (; k < this.array.length; k++) {
+            if (k in this.array) {
+                value = callback(value, this.array[k], k, this.array);
             }
         }
-        return new ArrayMethods(value);
+        return value;
     };
+
+    static reduce(arr,callback) {
+        return new ArrayMethods(arr).reduce(callback);
+    }
 
     filter(fun) {
         if (this === void 0 || this === null) {
