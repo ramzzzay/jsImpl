@@ -3,99 +3,76 @@
 /*export default*/
 class ArrayMethods {
 
-    constructor(array) {
-        this.array = array;
+    chain(array) {
+        var self = this;
+        return {
+            take: function(n) {
+                var x = this.take(n);
+                return self(x);
+            },
+            value: this.value};
     }
 
-    toString() {
-        return this.array.toString();
+    value(arr) {
+        return arr;
     }
 
-    static chain(array) {
-        this.array = array;
-        return new ArrayMethods(array);
-    }
-
-    value() {
-        return this.array;
-    }
-
-    forEach(callback) {
-        for (var i = 0; i <= this.array.length - 1; i++) {
-            callback(this.array[i]);
+    forEach(arr, callback) {
+        for (var i = 0; i <= arr.length - 1; i++) {
+            callback(arr.array[i]);
         }
     }
 
-    static forEach(arr,callback) {
-        new ArrayMethods(arr).forEach(callback);
-    }
-
-    map(callback) {
+    map(arr, callback) {
         var response = [];
-        for (var i = 0; i <= this.array.length - 1; i++) {
-            response.push(callback(this.array[i]));
+        for (var i = 0; i <= arr.length - 1; i++) {
+            response.push(callback(arr[i]));
         }
         return new ArrayMethods(response);
     }
 
-    static map(arr,callback){
-        return new ArrayMethods(arr).map(callback)
-    }
-
-    skip(n) {
+    skip(arr, n) {
         var response = [];
-        for (var i = n; i <= this.array.length - 1; i++) {
-            response.push(this.array[i])
+        for (var i = n; i <= arr.length - 1; i++) {
+            response.push(arr[i])
         }
         return new ArrayMethods(response);
     }
 
-    static skip(arr,n) {
-        return new ArrayMethods(arr).skip(n);
-    }
-
-    take(n) {
+    take(arr, n) {
         var response = [];
         for (var i = 0; i <= n - 1; i++) {
-            response.push(this.array[i])
+            response.push(arr[i])
         }
         return new ArrayMethods(response);
     }
 
-    static take(arr,n) {
-        return new ArrayMethods(arr).take(n);
-    }
-
-    reduce(callback) {
+    reduce(arr, callback) {
         var k = 0, value;
         if (arguments.length == 2) {
             value = arguments[1];
         } else {
-            while (k < this.array.length && !(k in this.array)) {
+            while (k < this.array.length && !(k in arr.array)) {
                 k++;
             }
-            if (k >= this.array.length) {
+            if (k >= arr.length) {
                 throw new TypeError('Reduce of empty array with no initial value');
             }
-            value = this.array[k++];
+            value = arr[k++];
         }
         for (; k < this.array.length; k++) {
             if (k in this.array) {
-                value = callback(value, this.array[k], k, this.array);
+                value = callback(value, arr[k], k, arr);
             }
         }
         return value;
     };
 
-    static reduce(arr,callback) {
-        return new ArrayMethods(arr).reduce(callback);
-    }
-
-    filter(fun) {
+    filter(arr, fun) {
         if (this === void 0 || this === null) {
             throw new TypeError();
         }
-        var t = Object(this.array);
+        var t = Object(arr);
         var len = t.length >>> 0;
         if (typeof fun !== 'function') {
             throw new TypeError();
