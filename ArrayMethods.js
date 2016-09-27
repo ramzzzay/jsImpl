@@ -1,6 +1,6 @@
 'use strict';
 
-export default class ArrayMethods {
+/*export default*/ class ArrayMethods {
 
     constructor(array){
         this.array = array;

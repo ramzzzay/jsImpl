@@ -1,0 +1,28 @@
+{
+  "name": "jsimpl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ArrayMethods.js",
+  "dependencies": {
+    "jasmine-core": "^2.5.2",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma": "^1.3.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramzzzay/jsImpl.git"
+  },
+  "author": "Anton.Burkin",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ramzzzay/jsImpl/issues"
+  },
+  "homepage": "https://github.com/ramzzzay/jsImpl#readme"
+}
