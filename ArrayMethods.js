@@ -13,7 +13,7 @@ class ArrayMethods {
 
     static chain(array) {
         this.array = array;
-        return new ArrayMethods(array)
+        return new ArrayMethods(array);
     }
 
     value() {
@@ -26,12 +26,20 @@ class ArrayMethods {
         }
     }
 
+    static forEach(arr,callback) {
+        new ArrayMethods(arr).forEach(callback);
+    }
+
     map(callback) {
         var response = [];
         for (var i = 0; i <= this.array.length - 1; i++) {
             response.push(callback(this.array[i]));
         }
         return new ArrayMethods(response);
+    }
+
+    static map(arr,callback){
+        return new ArrayMethods(arr).map(callback)
     }
 
     skip(n) {
@@ -42,12 +50,20 @@ class ArrayMethods {
         return new ArrayMethods(response);
     }
 
+    static skip(arr,n) {
+        return new ArrayMethods(arr).skip(n);
+    }
+
     take(n) {
         var response = [];
         for (var i = 0; i <= n - 1; i++) {
             response.push(this.array[i])
         }
         return new ArrayMethods(response);
+    }
+
+    static take(arr,n) {
+        return new ArrayMethods(arr).take(n);
     }
 
     reduce(callback) {
@@ -99,4 +115,3 @@ class ArrayMethods {
         return new ArrayMethods(res);
     };
 }
-;
