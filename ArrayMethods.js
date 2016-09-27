@@ -1,8 +1,9 @@
 'use strict';
 
-/*export default*/ class ArrayMethods {
+/*export default*/
+class ArrayMethods {
 
-    constructor(array){
+    constructor(array) {
         this.array = array;
     }
 
@@ -10,12 +11,12 @@
         return this.array.toString();
     }
 
-    static chain(array){
+    static chain(array) {
         this.array = array;
         return new ArrayMethods(array)
     }
 
-    value(){
+    value() {
         return this.array;
     }
 
@@ -43,7 +44,7 @@
 
     take(n) {
         var response = [];
-        for(var i = 0; i<= n-1;i++){
+        for (var i = 0; i <= n - 1; i++) {
             response.push(this.array[i])
         }
         return new ArrayMethods(response);
@@ -97,4 +98,5 @@
         }
         return new ArrayMethods(res);
     };
-};
+}
+;
