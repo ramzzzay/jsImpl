@@ -59,3 +59,38 @@ describe('Test 7. ', function() {
     });
     console.log("Test 7: OK");
 });
+
+describe('Test 8. ', function() {
+    console.log("Test 8. Checking filter() methods");
+    function filterByID(obj) {
+        if (obj.id !== undefined && typeof(obj.id) === 'number' && !isNaN(obj.id)) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    it('Checking filter() method: ', function() {
+        expect(ArrayMethods.chain([
+            { id: 15 },
+            { id: -1 },
+            { id: 0 },
+            { id: 3 },
+            { id: 12.2 },
+            { },
+            { id: null },
+            { id: NaN },
+            { id: 'undefined' }
+        ]).filter(filterByID).value()).toEqual([
+            { id: 15 },
+            { id: -1 },
+            { id: 0 },
+            { id: 3 },
+            { id: 12.2 },
+            { },
+            { id: null },
+            { id: NaN },
+            { id: 'undefined' }
+        ].filter(filterByID));
+    });
+    console.log("Test 8: OK");
+});
