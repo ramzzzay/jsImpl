@@ -55,24 +55,16 @@ class ArrayMethods {
     };
 
     filter(arr, callback) {
-        if (this === void 0 || this === null) {
-            throw new TypeError();
-        }
-        var t = Object(arr);
-        var len = t.length >>> 0;
-        if (typeof callback !== 'function') {
-            throw new TypeError();
-        }
-        var res = [];
+        var response = [];
         var thisArg = arguments.length >= 2 ? arguments[1] : void 0;
-        for (var i = 0; i < len; i++) {
-            if (i in t) {
-                var val = t[i];
-                if (callback.call(thisArg, val, i, t)) {
-                    res.push(val);
+        for (var i = 0; i < arr.length; i++) {
+            if (i in arr) {
+                var val = arr[i];
+                if (callback.call(thisArg, val, i, arr)) {
+                    response.push(val);
                 }
             }
         }
-        return res;
+        return response;
     };
 }
