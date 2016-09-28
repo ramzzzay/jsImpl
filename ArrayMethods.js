@@ -4,13 +4,10 @@
 class ArrayMethods {
 
     chain(array) {
-        var main = this;
         var self = result => this.chain(result);
         return  {
-            take: n => {
-                var result = this.take(array,n);
-                return self(result);
-            },
+            take: n => self(this.take(array,n)),
+            skip: n => self(this.skip(array,n)),
             value: () => this.value(array)};
     }
 
@@ -37,7 +34,7 @@ class ArrayMethods {
         for (var i = n; i <= arr.length - 1; i++) {
             response.push(arr[i])
         }
-        return new ArrayMethods(response);
+        return response;
     }
 
     take(arr, n) {
