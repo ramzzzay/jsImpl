@@ -12,12 +12,7 @@ class ArrayMethods {
             forEach: callback => self(this.forEach(array,callback)),
             reduce: callback => self(this.reduce(array,callback)),
             filter: callback => self(this.filter(array,callback)),
-            toString: () => array.toString(),
-            value: () => this.value(array)};
-    }
-
-    value(arr) {
-        return arr;
+            value: () => array};
     }
 
     forEach(arr, callback) {
@@ -35,11 +30,6 @@ class ArrayMethods {
     }
 
     skip(arr, n) {
-        // var response = [];
-        // for (var i = n; i < arr.length; i++) {
-        //     response.push(arr[i])
-        // }
-        // return response;
         return arr.slice(n);
     }
 

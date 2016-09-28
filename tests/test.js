@@ -18,10 +18,6 @@ describe('Test 1. ', () => {
         expect(am.chain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).skip(3).value()).toEqual([4, 5, 6, 7, 8, 9, 10]);
     });
 
-    it('Checking toString() method: ', () => {
-        expect(am.chain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).toString()).toEqual("1,2,3,4,5,6,7,8,9,10");
-    });
-
     it('Checking forEach() method: ', () => {
         expect(am.forEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],i=>console.log(i))).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].forEach(i=>console.log(i)));
     });
