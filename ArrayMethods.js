@@ -43,11 +43,8 @@ class ArrayMethods {
     }
 
     take(arr, n) {
-        var response = [];
-        for (var i = 0; i <= n - 1; i++) {
-            response.push(arr[i])
-        }
-        return response;
+        arr.length = n;
+        return arr;
     }
 
     reduce(arr,callback) {
