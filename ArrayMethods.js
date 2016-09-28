@@ -8,6 +8,7 @@ class ArrayMethods {
         return  {
             take: n => self(this.take(array,n)),
             skip: n => self(this.skip(array,n)),
+            map: callback => self(this.map(array,callback)),
             value: () => this.value(array)};
     }
 
@@ -26,7 +27,7 @@ class ArrayMethods {
         for (var i = 0; i <= arr.length - 1; i++) {
             response.push(callback(arr[i]));
         }
-        return new ArrayMethods(response);
+        return response;
     }
 
     skip(arr, n) {
