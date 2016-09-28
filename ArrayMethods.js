@@ -12,6 +12,7 @@ class ArrayMethods {
             forEach: callback => self(this.forEach(array,callback)),
             reduce: callback => self(this.reduce(array,callback)),
             filter: callback => self(this.filter(array,callback)),
+            toString: () => array.toString(),
             value: () => this.value(array)};
     }
 
@@ -49,21 +50,17 @@ class ArrayMethods {
         return response;
     }
 
-    reduce(arr, callback) {
-        var k = 0, value;
-        if (arguments.length == 2) {
-            value = arguments[1];
-        } else {
-            while (k < this.array.length && !(k in arr.array)) {
+    reduce(arr,callback) {
+        var k = 0, value = callback;
+            while (k < arr.length && !(k in arr)) {
                 k++;
             }
             if (k >= arr.length) {
                 throw new TypeError('Reduce of empty array with no initial value');
             }
             value = arr[k++];
-        }
-        for (; k < this.array.length; k++) {
-            if (k in this.array) {
+        for (; k < arr.length; k++) {
+            if (k in arr) {
                 value = callback(value, arr[k], k, arr);
             }
         }
@@ -76,7 +73,7 @@ class ArrayMethods {
         }
         var t = Object(arr);
         var len = t.length >>> 0;
-        if (typeof fun !== 'function') {
+        if (typeof callback !== 'function') {
             throw new TypeError();
         }
         var res = [];
