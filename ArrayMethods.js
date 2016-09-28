@@ -21,25 +21,26 @@ class ArrayMethods {
     }
 
     forEach(arr, callback) {
-        for (var i = 0; i <= arr.length - 1; i++) {
+        for (var i = 0; i < arr.length; i++) {
             callback(arr[i]);
         }
     }
 
     map(arr, callback) {
         var response = [];
-        for (var i = 0; i <= arr.length - 1; i++) {
+        for (var i = 0; i < arr.length; i++) {
             response.push(callback(arr[i]));
         }
         return response;
     }
 
     skip(arr, n) {
-        var response = [];
-        for (var i = n; i <= arr.length - 1; i++) {
-            response.push(arr[i])
-        }
-        return response;
+        // var response = [];
+        // for (var i = n; i < arr.length; i++) {
+        //     response.push(arr[i])
+        // }
+        // return response;
+        return arr.slice(n);
     }
 
     take(arr, n) {
