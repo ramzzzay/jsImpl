@@ -9,6 +9,7 @@ class ArrayMethods {
             take: n => self(this.take(array,n)),
             skip: n => self(this.skip(array,n)),
             map: callback => self(this.map(array,callback)),
+            forEach: callback => self(this.forEach(array,callback)),
             value: () => this.value(array)};
     }
 
@@ -67,7 +68,7 @@ class ArrayMethods {
         return value;
     };
 
-    filter(arr, fun) {
+    filter(arr, callback) {
         if (this === void 0 || this === null) {
             throw new TypeError();
         }
@@ -81,11 +82,11 @@ class ArrayMethods {
         for (var i = 0; i < len; i++) {
             if (i in t) {
                 var val = t[i];
-                if (fun.call(thisArg, val, i, t)) {
+                if (callback.call(thisArg, val, i, t)) {
                     res.push(val);
                 }
             }
         }
-        return new ArrayMethods(res);
+        return res;
     };
 }
