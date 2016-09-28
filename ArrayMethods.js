@@ -10,6 +10,7 @@ class ArrayMethods {
             skip: n => self(this.skip(array,n)),
             map: callback => self(this.map(array,callback)),
             forEach: callback => self(this.forEach(array,callback)),
+            reduce: callback => self(this.reduce(array,callback)),
             value: () => this.value(array)};
     }
 
