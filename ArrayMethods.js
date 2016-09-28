@@ -11,6 +11,7 @@ class ArrayMethods {
             map: callback => self(this.map(array,callback)),
             forEach: callback => self(this.forEach(array,callback)),
             reduce: callback => self(this.reduce(array,callback)),
+            filter: callback => self(this.filter(array,callback)),
             value: () => this.value(array)};
     }
 
