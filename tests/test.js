@@ -4,7 +4,7 @@
 
 // import ArrayMethods from "../ArrayMethods.js";
 
-describe('Test 1. ', () => {
+describe('ArrayMethods 1. ', () => {
     var am = new ArrayMethods();
     it('Checking chain()&&value() methods: ', ()=> {
         expect(am.chain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).value()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
@@ -23,11 +23,11 @@ describe('Test 1. ', () => {
     });
 
     it('Checking map() method: ', () => {
-        expect(am.map([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],i=>i)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(i=>i));
+        expect(am.map([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],i=>i*2)).toEqual([2, 4, 6, 8, 10, 12, 14, 16, 18, 20]);
     });
 
     it('Checking reduce() method: ', () => {
-        expect(am.reduce([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],(prev, curr) => prev + curr)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].reduce((prev, curr) => prev + curr));
+        expect(am.reduce([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],(prev, curr) => prev + curr)).toEqual(55);
     });
 
 
@@ -62,8 +62,4 @@ describe('Test 1. ', () => {
             {id: 'undefined'}
         ].filter(filterByID));
     });
-});
-
-describe('Test 8. ', () => {
-
 });
