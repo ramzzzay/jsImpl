@@ -16,14 +16,15 @@ class ArrayMethods {
     }
 
     forEach(arr, callback) {
-        for (var i = 0; i < arr.length; i++) {
+        var length = arr.length;
+        for (var i = 0; i < length; i++) {
             callback(arr[i]);
         }
     }
 
     map(arr, callback) {
-        var response = [];
-        for (var i = 0; i < arr.length; i++) {
+        var response = [], length = arr.length;
+        for (var i = 0; i < length; i++) {
             response.push(callback(arr[i]));
         }
         return response;
@@ -39,15 +40,15 @@ class ArrayMethods {
     }
 
     reduce(arr, callback) {
-        var k = 0, value = callback;
-        while (k < arr.length && !(k in arr)) {
+        var k = 0, length = arr.length;
+        while (k < length && !(k in arr)) {
             k++;
         }
-        if (k >= arr.length) {
+        if (k >= length) {
             throw new TypeError('Reduce of empty array with no initial value');
         }
-        value = arr[k++];
-        for (; k < arr.length; k++) {
+        var value = arr[k++];
+        for (; k < length; k++) {
             if (k in arr) {
                 value = callback(value, arr[k], k, arr);
             }
@@ -56,8 +57,8 @@ class ArrayMethods {
     };
 
     filter(arr, callback) {
-        var response = [];
-        for (var i = 0; i < arr.length; i++) {
+        var response = [], length = arr.length;
+        for (var i = 0; i < length; i++) {
             if (i in arr) {
                 var val = arr[i];
                 if (callback.call(callback, val, i, arr)) {
