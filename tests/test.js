@@ -7,7 +7,7 @@
 describe('ArrayMethods 1. ', () => {
     var am = new ArrayMethods();
     var array = [1, 2, 3, 4, 5];
-    it('Checking chain()&&value() methods: ', ()=> {
+    it('Checking chain() and value() methods: ', () => {
         expect(am.chain(array).value()).toEqual([1, 2, 3, 4, 5]);
     });
 
@@ -20,9 +20,9 @@ describe('ArrayMethods 1. ', () => {
     });
 
     it('Checking forEach() method: ', () => {
-        let awaited = [];
-        am.forEach(array, i=>awaited.push(i*i));
-        expect(awaited).toEqual([ 1, 4, 9, 16, 25 ]);
+        let temp = [];
+        am.forEach(array, i => temp.push(i * i));
+        expect(temp).toEqual([1, 4, 9, 16, 25]);
     });
 
     it('Checking map() method: ', () => {
@@ -31,20 +31,13 @@ describe('ArrayMethods 1. ', () => {
 
     it('Checking reduce() method: ', () => {
         expect(am.reduce(array, (prev, curr) => prev + curr)).toEqual(15);
+        expect(am.reduce([1, 2, 3, 4, 5, 3, 2, 4, 1], (previousValue, currentValue, index, array) => array.indexOf(currentValue) === index ? previousValue + currentValue : previousValue)).toEqual(15);
     });
 
     it('Checking filter() method: ', () => {
-        function filterByID(obj) {
-            if (obj.id !== undefined && typeof(obj.id) === 'number' && !isNaN(obj.id)) {
-                return true;
-            } else {
-                return false;
-            }
-        };
         expect(am.chain([
             {id: 15}, {id: -1}, {id: 0},
-            {id: 3}, {id: 12.2}, {},
-            {id: null}, {id: NaN}, {id: 'undefined'}
-        ]).filter(filterByID).value()).toEqual([{id:15},{id:-1},{id:0},{id:3},{id:12.2}]);
+            {id: null}, {id: NaN}, {id: undefined}
+        ]).filter(obj => obj.id !== undefined && typeof(obj.id) === 'number' && !isNaN(obj.id)).value()).toEqual([{id: 15}, {id: -1}, {id: 0}]);
     });
 });
