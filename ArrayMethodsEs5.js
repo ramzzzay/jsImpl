@@ -75,6 +75,3 @@ var ArrayMethods = {
         return response;
     }
 };
-
-let am = ArrayMethods;
-am.chain([1,2,3]).take(1);
