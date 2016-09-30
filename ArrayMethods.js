@@ -35,8 +35,7 @@ class ArrayMethods {
     }
 
     take(arr, n) {
-        arr.length = n;
-        return arr;
+        return arr.slice(0,n);
     }
 
     reduce(arr, callback) {
