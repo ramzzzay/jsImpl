@@ -9,10 +9,10 @@ var ArrayMethods = {
         }
         return {
             take: wrapChain(this.take),
-            skip: n => wrapChain.call(this,this.skip,array,n),
-            map: callback => wrapChain.call(this,this.map,array,callback),
-            forEach: callback => wrapChain.call(this,this.forEach,array,callback),
-            filter: callback => wrapChain.call(this,this.filter,array,callback),
+            skip: n => wrapChain.(this.skip),
+            map: callback => wrapChain(this.map),
+            forEach: callback => wrapChain(this.forEach),
+            filter: callback => wrapChain(this.filter),
             value: function value() {
                 return array;
             }
