@@ -9,7 +9,7 @@ var ArrayMethods = {
         }
         return {
             take: wrapChain(this.take),
-            skip: n => wrapChain.(this.skip),
+            skip: n => wrapChain(this.skip),
             map: callback => wrapChain(this.map),
             forEach: callback => wrapChain(this.forEach),
             filter: callback => wrapChain(this.filter),
