@@ -2,12 +2,13 @@
 
 var ArrayMethods = {
     chain: function chain(array) {
-        function wrapChain() {
-            return this.chain(arguments[0](arguments[1],arguments[2]));
+        function wrapChain(fn) {
+            return function() {
+                return fn(array,arguments[0]);
+            }
         }
-
         return {
-            take: n => wrapChain.call(this,this.take,array,n),
+            take: wrapChain(this.take),
             skip: n => wrapChain.call(this,this.skip,array,n),
             map: callback => wrapChain.call(this,this.map,array,callback),
             forEach: callback => wrapChain.call(this,this.forEach,array,callback),
@@ -38,8 +39,7 @@ var ArrayMethods = {
     },
 
     take: function take(arr, n) {
-        arr.length = n;
-        return arr;
+        return arr.slice(0,n);
     },
 
     reduce: function (arr, callback) {
@@ -64,7 +64,7 @@ var ArrayMethods = {
         for (var i = 0; i < length; i++) {
             if (i in arr) {
                 var val = arr[i];
-                if (callback.call(callback, val, i, arr)) {
+                if (callback(val, i, arr)) {
                     response.push(val);
                 }
             }
@@ -72,3 +72,5 @@ var ArrayMethods = {
         return response;
     }
 };
+
+let am = ArrayMethods;
