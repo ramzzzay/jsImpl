@@ -2,20 +2,16 @@
 
 var ArrayMethods = {
     chain: function chain(array) {
-        var ams = this;
         function wrapChain() {
-            // return this.take(array,1);
-            console.log(arguments[0]);
-            // return arguments[0](this.take(arguments[1],arguments[2]));
+            return this.chain(arguments[0](arguments[1],arguments[2]));
         }
-        var s = () => this;
 
         return {
-            take: n=> wrapChain.call(ams,s,array,n),
-            // skip: wrapChain(skip),
-            // map: wrapChain(map),
-            // forEach: wrapChain(forEach),
-            // filter: wrapChain(filter),
+            take: n => wrapChain.call(this,this.take,array,n),
+            skip: n => wrapChain.call(this,this.skip,array,n),
+            map: callback => wrapChain.call(this,this.map,array,callback),
+            forEach: callback => wrapChain.call(this,this.forEach,array,callback),
+            filter: callback => wrapChain.call(this,this.filter,array,callback),
             value: function value() {
                 return array;
             }
