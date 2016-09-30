@@ -72,5 +72,3 @@ var ArrayMethods = {
         return response;
     }
 };
-
-let am = ArrayMethods;
