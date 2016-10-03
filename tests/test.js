@@ -32,7 +32,7 @@ describe('ArrayMethods 1. ', () => {
     it('Checking reduce() method: ', () => {
         expect(am.reduce(array, (prev, curr) => prev + curr)).toEqual(15);
         expect(am.reduce([1, 2, 3, 4, 5, 3, 2, 4, 1],
-            (previousValue, currentIndex, array) => array.indexOf(array[currentIndex]) === currentIndex ? previousValue + currentValue : previousValue)).toEqual(15);
+            (previousValue, currentIndex, array) => array.indexOf(array[currentIndex]) === currentIndex ? previousValue + currentIndex : previousValue)).toEqual(15);
     });
 
     it('Checking filter() method: ', () => {
