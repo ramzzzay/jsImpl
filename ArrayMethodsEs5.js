@@ -79,5 +79,23 @@ var ArrayMethods = {
     }
 };
 
-let am = ArrayMethods;
-console.log(am.chain([1,2,3,4,5]).take(3).value());
+function memoize(func) {
+    var memo = {};
+    var slice = Array.prototype.slice;
+
+    return function() {
+        var args = slice.call(arguments);
+
+        if (args in memo){
+            console.log("Cached!");
+            return memo[args];
+        }
+        else {
+            console.log("Not cached!");
+            return (memo[args] = func.apply(this, args));
+        }
+
+    }
+}
+
+var sum = memoize(function() {return Array.from(arguments).reduce((l,c)=>l+c)});
