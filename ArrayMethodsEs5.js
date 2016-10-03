@@ -4,22 +4,25 @@ var ArrayMethods = {
     chain: function chain(array) {
         var me = this;
         function wrapChain(fn) {
-            return function() {
-                return this.me.chain(fn(array,arguments[0]));
-            }
+            return (function() {
+                return this.chain(fn.apply(null,arguments));
+            }).bind(me,array);
         }
-
         return {
-            me: me,
             take: wrapChain(this.take),
             skip: wrapChain(this.skip),
             map: wrapChain(this.map),
             forEach: wrapChain(this.forEach),
             filter: wrapChain(this.filter),
+            threeArgs: wrapChain(this.threeArgs),
             value: function value() {
                 return array;
             }
         };
+    },
+
+    threeArgs: function (arr, arr2, arr3) {
+        return arr.concat(arr2).concat(arr3);
     },
 
     forEach: function (arr, callback) {
@@ -75,3 +78,6 @@ var ArrayMethods = {
         return response;
     }
 };
+
+let am = ArrayMethods;
+console.log(am.chain([1,2,3,4,5]).take(3).value());
